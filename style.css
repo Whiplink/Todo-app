@@ -1,0 +1,163 @@
+.attribution { display: none; font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+  /* background-image: url('./images/bg-desktop-dark.jpg');
+  background-size: cover;
+  background-repeat: no-repeat; */
+  background-color: hsl(235, 21%, 11%);
+  color: white;
+  padding: 20px;
+}
+
+.bg-d-dark {
+  background-image: url('./images/bg-desktop-dark.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100%;
+  max-height: 280px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+input {
+  font-size: 18px;
+  color: white;
+}
+
+header, .container {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 80px auto 40px auto;
+}
+
+main {
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-weight: 700;
+}
+
+.todo-input-container {
+  padding: 18px;
+  background-color: hsl(235, 24%, 19%);
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+.circle {
+  border-radius: 50%;
+  border: 1px solid gray;
+  width: 20px;
+  aspect-ratio: 1/1;
+  margin-right: 18px;
+  position: relative;
+  cursor: pointer;
+}
+.circle > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-45%, -45%);
+}
+
+#todo-input {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  outline: none;
+}
+
+.todos-container {
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+
+.todo {
+  padding: 18px;
+  background-color: hsl(235, 24%, 19%);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+
+.filter-section {
+  display: flex;
+  background-color: hsl(235, 24%, 19%);
+  padding: 18px;
+  border-radius: 0 0 5px 5px;
+  font-size: 15px;
+  color: hsl(234, 11%, 52%);
+}
+.filter-section > * {
+  flex: 1;
+}
+#clear {
+  text-align: right;
+}
+.filter-section > div {
+  display: flex;
+  gap: 20px;
+}
+.filter-section > div > p, #clear {
+  cursor: pointer;
+}
+
+.active {
+  color: hsl(220, 98%, 61%);
+}
+
+.done {
+  background-image: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border: none;
+}
+
+.linethrough {
+  text-decoration: line-through;
+  color: hsl(233, 14%, 35%);
+}
+.mobile {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .desktop {
+    display: none !important;
+  }
+  .mobile {
+    display: flex;
+    background-color: hsl(235, 24%, 19%);
+    padding: 18px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: hsl(234, 11%, 52%);
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+}
