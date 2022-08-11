@@ -20,15 +20,16 @@ const addTodo = (p, pushData = true) => {
   const div = document.createElement('div')
   const circle = document.createElement('div')
   const name = document.createElement('p')
+  const img = document.createElement('img')
+  img.setAttribute('src', './images/icon-cross.svg')
   div.classList.add('todo')
   div.todo = true
   div.drag = false
   circle.classList.add('circle')
   name.textContent = p
-  div.append(circle, name)
+  div.append(circle, name, img)
 
-
-  circle.addEventListener('click', () => {
+  const finish = () => {
     if (!div.finish) {
       const img = document.createElement('img')
       img.setAttribute('src', './images/icon-check.svg')
@@ -46,8 +47,16 @@ const addTodo = (p, pushData = true) => {
     circle.removeChild(circle.img)
     div.finish = false
     updateItemsLeft()
-    
+  }
+
+
+  circle.addEventListener('click', finish)
+  name.addEventListener('click', finish)
+  img.addEventListener('click', () => {
+    removeToList(div)
+    updateItemsLeft()
   })
+
   data.push(div)
   clearActive()
   allBtn.classList.add('active')
@@ -78,6 +87,11 @@ const clearContainer = () => {
   while(todosContainer.firstChild) {
     todosContainer.removeChild(todosContainer.firstChild)
   }
+}
+
+const removeToList = div => {
+  data = data.filter(x => x != div)
+  todosContainer.removeChild(div)
 }
 
 form.addEventListener('submit', (e) => {
@@ -150,11 +164,12 @@ toggleBtn.addEventListener('click', () => {
   if(darkMode){
     toggleBtn.setAttribute('src', './images/icon-moon.svg')
     darkMode = false
-    
+    document.body.classList.add('lightmode')
     return
   }
   toggleBtn.setAttribute('src', './images/icon-sun.svg')
   darkMode = true
+  document.body.classList.remove('lightmode')
   return
 })
 

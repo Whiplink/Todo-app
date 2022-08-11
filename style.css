@@ -8,6 +8,33 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 
+body.lightmode {
+  background-color: hsl(236, 33%, 92%);
+}
+body.lightmode .todo {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(235, 19%, 35%);
+  transition: all 0.2s;
+  border-bottom: 1px solid hsl(233, 11%, 84%);
+}
+body.lightmode :is(.filter-section,.todo-input-container, .mobile) {
+  background-color: hsl(0, 0%, 98%);
+  transition: all 0.2s;
+}
+body.lightmode :is(.filter-section > div > p:hover, #clear:hover, .mobile > p:hover, .todo-input){
+  color: hsl(235, 19%, 35%);
+}
+body.lightmode :is(.filter-section > div > p, #clear, .linethrough, .mobile){
+  color: hsl(236, 9%, 61%);
+}
+body.lightmode main {
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
+}
+
+#toggleBtn {
+  cursor: pointer;
+}
+
 body {
   /* background-image: url('./images/bg-desktop-dark.jpg');
   background-size: cover;
@@ -15,6 +42,7 @@ body {
   background-color: hsl(235, 21%, 11%);
   color: white;
   padding: 20px;
+  transition: all 0.2s;
 }
 
 .bg-d-dark {
@@ -48,7 +76,10 @@ header {
 }
 
 main {
-  margin-top: 20px;
+  margin-top: 20px !important;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.5);
+  max-width: 550px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -74,6 +105,9 @@ h1 {
   position: relative;
   cursor: pointer;
 }
+.circle:hover {
+  border: 1px solid hsl(192, 100%, 67%);
+}
 .circle > img {
   position: absolute;
   top: 50%;
@@ -81,7 +115,7 @@ h1 {
   transform: translate(-45%, -45%);
 }
 
-#todo-input {
+.todo-input {
   border: none;
   background-color: transparent;
   width: 100%;
@@ -98,7 +132,23 @@ h1 {
   background-color: hsl(235, 24%, 19%);
   display: flex;
   align-items: center;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid hsl(237, 14%, 26%);
+  position: relative;
+}
+
+.todo > p {
+  cursor: pointer;
+}
+
+.todo > img {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.todo:hover > img {
+  display: block;
 }
 
 .filter-section {
@@ -114,17 +164,25 @@ h1 {
 }
 #clear {
   text-align: right;
+  font-weight: 400 !important;
 }
+
 .filter-section > div {
   display: flex;
   gap: 20px;
 }
-.filter-section > div > p, #clear {
+.filter-section > div > p, #clear, .mobile > p {
   cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+.filter-section > div > p:hover, #clear:hover, .mobile > p:hover {
+  color: white;
 }
 
-.active {
-  color: hsl(220, 98%, 61%);
+.active, .active:hover {
+  color: hsl(220, 98%, 61%) !important;
+  cursor: default !important;
 }
 
 .done {
@@ -141,6 +199,9 @@ h1 {
 }
 
 @media (max-width: 500px) {
+  body {
+    font-size: 1rem;
+  }
   h1 {
     font-size: 2rem;
   }
